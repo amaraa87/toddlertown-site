@@ -1,0 +1,237 @@
+/* Toddler Town Game — site identity.
+   Warm cream paper, sky blue for links and actions, coral for the brand house.
+   System rounded type only: no web fonts, no scripts. */
+
+:root {
+  --bg: #fff8ec;
+  --surface: #ffffff;
+  --sunk: #f6ecd9;
+  --border: #eedfc6;
+  --ink: #2b2a33;
+  --ink-muted: #6a6572;
+
+  --sky: #2677b5;
+  --sky-lip: #1b5c8f;
+  --sky-soft: #e2f1fc;
+  --sky-ink: #1b5c8f;
+  --sky-on: #ffffff;
+
+  --coral: #ff7a6b;
+  --coral-lip: #d9584a;
+  --coral-soft: #ffe6e1;
+  --coral-ink: #b8402f;
+
+  --leaf: #7cc47a;
+  --leaf-soft: #e3f4dc;
+  --leaf-ink: #2f6e2d;
+  --sun: #ffc94d;
+  --sun-soft: #fff1c7;
+  --sun-ink: #7a5600;
+
+  --font: ui-rounded, "SF Pro Rounded", "Arial Rounded MT Bold", system-ui, -apple-system,
+          "Segoe UI", sans-serif;
+
+  color-scheme: light dark;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #1a1714;
+    --surface: #24201c;
+    --sunk: #2e2924;
+    --border: #3a332c;
+    --ink: #f4eee4;
+    --ink-muted: #b3aa9d;
+
+    --sky: #5aa9e6;
+    --sky-lip: #3b88c4;
+    --sky-soft: #172a3a;
+    --sky-ink: #9fd0f7;
+    --sky-on: #0d2233;
+
+    --coral: #ff8a7c;
+    --coral-lip: #e0685a;
+    --coral-soft: #3a1f1b;
+    --coral-ink: #ffb1a6;
+
+    --leaf: #8fd48c;
+    --leaf-soft: #1b2e1a;
+    --leaf-ink: #a6e3a3;
+    --sun: #ffd36b;
+    --sun-soft: #352a10;
+    --sun-ink: #ffdc8a;
+  }
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font);
+  font-size: 17px;
+  font-weight: 500;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-size-adjust: 100%;
+}
+
+.wrap { max-width: 880px; margin: 0 auto; padding: 0 16px; }
+
+a { color: var(--sky-ink); text-underline-offset: 3px; }
+a:hover { text-decoration-thickness: 2px; }
+
+:focus-visible { outline: 3px solid var(--sky); outline-offset: 2px; border-radius: 6px; }
+
+.skip { position: absolute; left: -9999px; }
+.skip:focus { left: 16px; top: 12px; background: var(--surface); padding: 8px 12px; z-index: 1; }
+
+h1, h2, h3 { line-height: 1.2; font-weight: 800; letter-spacing: -0.01em; }
+h2 { font-size: clamp(22px, 3.6vw, 28px); margin: 0 0 14px; }
+h3 { font-size: 18px; margin: 0 0 6px; }
+
+/* ── Header / footer ────────────────────────────────────────────────── */
+
+.site-header {
+  display: flex; align-items: center; justify-content: space-between;
+  flex-wrap: wrap; gap: 12px 20px; padding: 20px 0;
+}
+
+.wordmark {
+  display: flex; align-items: center; gap: 10px;
+  color: var(--ink); text-decoration: none; font-weight: 800; font-size: 18px;
+}
+
+/* The brand mark: a little house on a sky tile. */
+.house { width: 36px; height: 36px; flex-shrink: 0; }
+.house.big { width: 76px; height: 76px; }
+.house .tile { fill: var(--sky); }
+.house .roof { fill: var(--coral); }
+.house .walls { fill: #fff8ec; }
+.house .door { fill: var(--sun); }
+
+.site-nav { display: flex; gap: 18px; font-size: 15px; }
+.site-nav a { color: var(--ink-muted); text-decoration: none; }
+.site-nav a:hover, .site-nav a[aria-current="page"] { color: var(--ink); }
+
+.site-footer {
+  margin-top: 72px; padding: 24px 0 40px; border-top: 2px dashed var(--border);
+  display: flex; flex-wrap: wrap; gap: 10px 24px; justify-content: space-between;
+  font-size: 14px; color: var(--ink-muted);
+}
+.site-footer nav { display: flex; flex-wrap: wrap; gap: 18px; }
+.site-footer a { color: var(--ink-muted); }
+
+/* ── Button: a lip means pressable ──────────────────────────────────── */
+
+.btn {
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 14px 22px; border-radius: 18px;
+  background: var(--sky); color: var(--sky-on);
+  border-bottom: 4px solid var(--sky-lip);
+  font-weight: 800; font-size: 19px; letter-spacing: 0.02em;
+  text-decoration: none;
+  transition: transform 150ms ease, border-bottom-width 150ms ease;
+}
+.btn:hover { color: var(--sky-on); }
+.btn:active { transform: translateY(3px); border-bottom-width: 1px; }
+.btn small { display: block; font-size: 11px; letter-spacing: 0.06em; opacity: 0.85; font-weight: 700; }
+
+/* ── Hero ───────────────────────────────────────────────────────────── */
+
+.hero { padding: 28px 0 8px; }
+.hero .brand { display: flex; align-items: center; gap: 16px; margin-bottom: 22px; }
+.hero .brand div b { display: block; font-size: 22px; }
+.hero .brand div span { color: var(--ink-muted); font-size: 15px; }
+.hero h1 { font-size: clamp(30px, 6vw, 48px); margin: 0 0 14px; max-width: 18ch; }
+.hero h1 em { font-style: normal; color: var(--coral-ink); }
+.hero .sub { color: var(--ink-muted); font-size: 18px; max-width: 60ch; margin: 0 0 24px; }
+.hero .cta { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 20px; }
+.hero .cta p { margin: 0; color: var(--ink-muted); font-size: 14px; }
+
+/* Signature: a little street of toy houses. Decorative only. */
+.street { display: block; width: 100%; height: auto; margin: 36px 0 0; }
+.street .sky { fill: var(--sky-soft); }
+.street .ground { fill: var(--leaf-soft); }
+.street .road { fill: var(--sunk); }
+.street .stripe { fill: var(--surface); }
+.street .wall { fill: var(--surface); stroke: var(--border); stroke-width: 2; }
+.street .roof-a { fill: var(--coral); }
+.street .roof-b { fill: var(--sky); }
+.street .roof-c { fill: var(--sun); }
+.street .win { fill: var(--sky-soft); stroke: var(--border); stroke-width: 2; }
+.street .door { fill: var(--coral-soft); stroke: var(--border); stroke-width: 2; }
+.street .tree { fill: var(--leaf); }
+.street .trunk { fill: var(--sun-ink); }
+.street .sun { fill: var(--sun); }
+
+/* ── Sections ───────────────────────────────────────────────────────── */
+
+section { padding: 48px 0 0; }
+
+.eyebrow {
+  margin: 0 0 6px; font-size: 13px; font-weight: 800;
+  letter-spacing: 0.12em; text-transform: uppercase; color: var(--coral-ink);
+}
+
+.grid { display: grid; gap: 14px; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+
+/* Link cards are flat: no lip. */
+.card {
+  display: block; text-decoration: none; color: var(--ink);
+  background: var(--surface); border: 2px solid var(--border); border-radius: 20px;
+  padding: 18px 18px 16px;
+}
+a.card:hover { border-color: var(--sky); }
+.card p { margin: 0; color: var(--ink-muted); font-size: 15px; }
+.card .tag {
+  display: inline-block; margin-bottom: 10px; padding: 2px 10px; border-radius: 999px;
+  font-size: 13px; font-weight: 700; background: var(--sky-soft); color: var(--sky-ink);
+}
+.card .tag.coral { background: var(--coral-soft); color: var(--coral-ink); }
+.card .tag.leaf { background: var(--leaf-soft); color: var(--leaf-ink); }
+.card .tag.sun { background: var(--sun-soft); color: var(--sun-ink); }
+
+.promise {
+  display: grid; gap: 12px; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  margin: 0; padding: 0; list-style: none;
+}
+.promise li { border-left: 4px solid var(--coral); padding: 2px 0 2px 14px; }
+.promise b { display: block; }
+.promise span { color: var(--ink-muted); font-size: 15px; }
+
+/* ── Document pages ─────────────────────────────────────────────────── */
+
+.doc { max-width: 720px; }
+.doc h1 { font-size: clamp(28px, 5vw, 38px); margin: 32px 0 6px; }
+.doc h2 { font-size: 21px; margin: 40px 0 10px; }
+.doc .updated { color: var(--ink-muted); font-size: 14px; margin: 0 0 24px; }
+.doc .lede {
+  background: var(--coral-soft); border-radius: 18px; padding: 16px 18px; margin: 0 0 24px;
+}
+.doc li { margin: 6px 0; }
+
+details {
+  background: var(--surface); border: 2px solid var(--border); border-radius: 18px;
+  padding: 2px 18px; margin: 10px 0;
+}
+summary {
+  cursor: pointer; font-weight: 700; padding: 14px 0; list-style: none;
+  display: flex; justify-content: space-between; gap: 12px;
+}
+summary::-webkit-details-marker { display: none; }
+summary::after { content: "+"; color: var(--sky-ink); font-weight: 800; flex-shrink: 0; }
+details[open] summary::after { content: "−"; }
+details p, details ul { margin-top: 0; color: var(--ink-muted); }
+
+.contact {
+  margin: 36px 0 0; padding: 22px; border-radius: 22px;
+  background: var(--sky-soft); border: 2px solid var(--sky);
+}
+.contact h2 { margin: 0 0 6px; font-size: 21px; }
+.contact p { margin: 6px 0; }
+
+@media (prefers-reduced-motion: reduce) {
+  .btn { transition: none; }
+}
